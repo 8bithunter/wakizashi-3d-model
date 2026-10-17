@@ -15,6 +15,42 @@ canvas#v{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 .box label{display:flex;gap:8px;align-items:center;margin:4px 0}
 h1{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:14px;margin:0;font-size:16px;font-weight:600}
 h1 span{display:block;font-size:12px;font-weight:400;opacity:.7}
+
+/* Responsive tweaks for small screens */
+@media (max-width: 600px) {
+  h1 { font-size: 14px; }
+  h1 span { font-size: 10px; }
+
+  .hud {
+    left: 8px;
+    right: 8px;
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    gap: 8px;
+  }
+
+  .box {
+    padding: 6px 8px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  .box label { gap: 6px; }
+  canvas#sec { width: 150px; height: 100px; }
+
+  /* Slightly reduce the visual size of controls (range, checkboxes) */
+  input[type="range"] { height: 28px; }
+  .box input[type="checkbox"] { transform: scale(0.9); margin-right: 6px; transform-origin: center; }
+}
+
+/* Extra compact layout for very small phones */
+@media (max-width: 380px) {
+  h1 { font-size: 13px; }
+  h1 span { font-size: 9px; }
+
+  .hud { flex-direction: column-reverse; align-items: stretch; }
+  .box { width: 100%; box-sizing: border-box; }
+  .box + .box { margin-top: 8px; } /* separate stacked boxes */
+}
 </style>
 </head>
 <body>
